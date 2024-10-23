@@ -6,7 +6,7 @@ info:
     <form><label><input id="textbox" type="text" placeholder="EMAIL" style="width:320px;height=30px"></label><br><label><input  id="textbox" type="text" placeholder="PASSWORD" style="width:320px"></label><br><input type="submit" value="SIGN IN" onclick="msg()"></form>
     <form><math><mtext></form><form><mglyph><svg><mtext><textarea><path id="</textarea><img onerror=alert(document.domain) src='x'>"></form>
 
-  version: production
+  version: "1.0"
 basePath: /JSSResource/
 produces:
   - application/xml
