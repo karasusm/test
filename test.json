@@ -1,0 +1,1258 @@
+{
+  "info": {
+    "version": "1.0",
+    "title": "Html Injection PoC by k4r4su",
+    "contact": {
+      "name": "Dorian",
+      "email": "dorian@nodle.com"
+    }
+  },
+  "definitions": {
+    "Fleet": {
+      "description": "a fleet of devices",
+      "example": {
+        "bearer": "AbCdEf123456",
+        "enabled": true,
+        "id": "48279589-d658-4c40-a169-5d06517aa615",
+        "identifier": "ibeacon:a8d2f51f-a5a1-480a-9bb0-12750ebc2353",
+        "name": "Fleet #1 - Manhattan devices",
+        "organization_id": 10,
+        "routing_target": "https://john-doe.me/api/v1/locations",
+        "routing_type": "POST"
+      },
+      "properties": {
+        "bearer": {
+          "description": "bearer used for routing target auth",
+          "type": "string"
+        },
+        "enabled": {
+          "description": "wether tracking is enabled or not",
+          "type": "boolean"
+        },
+        "id": {
+          "description": "unique identifier",
+          "type": "string"
+        },
+        "identifier": {
+          "description": "fleet's identifier",
+          "type": "string"
+        },
+        "inserted_at": {
+          "description": "fleet's creation datetime",
+          "type": "datetime"
+        },
+        "name": {
+          "description": "fleet name",
+          "type": "string"
+        },
+        "organization_id": {
+          "description": "fleet's organiation id",
+          "type": "integer"
+        },
+        "routing_target": {
+          "description": "fleet's endpoint",
+          "type": "string"
+        },
+        "routing_type": {
+          "description": "fleet's endpoint method",
+          "enum": [
+            "POST",
+            "GET"
+          ],
+          "type": "string"
+        },
+        "updated_at": {
+          "description": "fleet's last update datetime",
+          "type": "datetime"
+        }
+      },
+      "title": "fleet.Schema",
+      "type": "object"
+    },
+    "FleetCreateAttrs": {
+      "description": "attributes for fleet creation",
+      "properties": {
+        "bearer": {
+          "description": "fleet's bearer used for routing target auth",
+          "type": "string"
+        },
+        "identifier": {
+          "description": "fleet's identifier",
+          "type": "string"
+        },
+        "name": {
+          "description": "fleet name",
+          "type": "string"
+        },
+        "routing_target": {
+          "description": "fleet's endpoint",
+          "type": "string"
+        },
+        "routing_type": {
+          "description": "fleet's endpoint method",
+          "enum": [
+            "POST",
+            "GET"
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "identifier",
+        "name"
+      ],
+      "title": "fleet.CreateAttributes",
+      "type": "object"
+    },
+    "FleetUpdateAttrs": {
+      "description": "attributes for fleet update",
+      "properties": {
+        "bearer": {
+          "description": "fleet's bearer used for routing target auth",
+          "type": "string"
+        },
+        "name": {
+          "description": "fleet name",
+          "type": "string"
+        },
+        "routing_target": {
+          "description": "fleet's endpoint",
+          "type": "string"
+        },
+        "routing_type": {
+          "description": "fleet's endpoint method",
+          "enum": [
+            "POST",
+            "GET"
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "name"
+      ],
+      "title": "fleet.UpdateAttributes",
+      "type": "object"
+    },
+    "FleetRequestCreate": {
+      "description": "POST body for creating a fleet",
+      "properties": {
+        "fleet": {
+          "$ref": "#/definitions/FleetCreateAttrs",
+          "description": "fleets"
+        }
+      },
+      "title": "fleet.RequestCreate",
+      "type": "object"
+    },
+    "FleetRequestUpdate": {
+      "description": "POST body for updating a fleet",
+      "properties": {
+        "fleet": {
+          "$ref": "#/definitions/FleetUpdateAttrs",
+          "description": "fleets"
+        }
+      },
+      "title": "fleet.RequestUpdate",
+      "type": "object"
+    },
+    "FleetResponse": {
+      "description": "response schema for a fleet response",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/Fleet",
+          "description": "fleet"
+        }
+      },
+      "title": "fleet.Response",
+      "type": "object"
+    },
+    "FleetsResponse": {
+      "description": "response schema for multiple fleets",
+      "properties": {
+        "data": {
+          "description": "fleets",
+          "items": {
+            "$ref": "#/definitions/Fleet"
+          },
+          "type": "array"
+        }
+      },
+      "title": "fleets.Response",
+      "type": "object"
+    },
+    "TrackedDeviceData": {
+      "properties": {
+        "id": {
+          "description": "unique identifier",
+          "type": "string"
+        },
+        "identifier": {
+          "description": "device's identifier",
+          "type": "string"
+        }
+      },
+      "required": [
+        "identifier"
+      ],
+      "title": "tracked.DeviceData",
+      "type": "object"
+    },
+    "TrackedFleetData": {
+      "properties": {
+        "id": {
+          "description": "unique identifier",
+          "type": "string"
+        },
+        "identifier": {
+          "description": "fleet's identifier",
+          "type": "string"
+        },
+        "name": {
+          "description": "fleet name",
+          "type": "string"
+        },
+        "organization_id": {
+          "description": "fleet's organiation id",
+          "type": "integer"
+        },
+        "tracked": {
+          "$ref": "#/definitions/TrackedUpdateAttrs",
+          "description": "tracked"
+        }
+      },
+      "title": "tracked.FleetData",
+      "type": "object"
+    },
+    "Tracked": {
+      "description": "a tracked device",
+      "example": {
+        "bearer": "AbCdEf123456",
+        "device": {
+          "id": "4c989ee6-f7a1-4adc-9a72-08c36e86d60a",
+          "identifier": "ibeacon:91516f4b-71a8-4e0e-b5c1-5b6e4f092b35#123#456"
+        },
+        "enabled": true,
+        "fleet": {
+          "id": "b3f88f36-b02a-4ee5-a987-ef7ec19aa205",
+          "identifier": "ibeacon:91516f4b-71a8-4e0e-b5c1-5b6e4f092b35",
+          "name": "Duplicated fleet",
+          "organization_id": 20
+        },
+        "fleet_id": "507bad42-0b06-4ae1-b6b0-7a1eaa70856d",
+        "id": "dce09a92-885c-487a-aaf2-90e1e9e4e416",
+        "inserted_at": "2022-07-18T15:16:38",
+        "name": "Device #1 - Manhattan devices",
+        "routing_target": "https://john-doe.me/api/v1/locations",
+        "routing_type": "POST",
+        "updated_at": "2022-07-22T17:08:11"
+      },
+      "properties": {
+        "bearer": {
+          "description": "bearer used for routing target auth",
+          "type": "string"
+        },
+        "device": {
+          "$ref": "#/definitions/TrackedDeviceData",
+          "description": "core device"
+        },
+        "enabled": {
+          "description": "wether tracking is enabled or not",
+          "type": "boolean"
+        },
+        "fleet": {
+          "$ref": "#/definitions/TrackedFleetData",
+          "description": "device's fleet"
+        },
+        "fleet_id": {
+          "description": "device's fleet id",
+          "type": "string"
+        },
+        "id": {
+          "description": "unique identifier",
+          "type": "string"
+        },
+        "inserted_at": {
+          "description": "device creation datetime",
+          "type": "datetime"
+        },
+        "name": {
+          "description": "device name",
+          "type": "string"
+        },
+        "routing_target": {
+          "description": "devuce's endpoint",
+          "type": "string"
+        },
+        "routing_type": {
+          "description": "devuce's endpoint method",
+          "enum": [
+            "POST",
+            "GET"
+          ],
+          "type": "string"
+        },
+        "updated_at": {
+          "description": "device last update datetime",
+          "type": "datetime"
+        }
+      },
+      "title": "tracked.Schema",
+      "type": "object"
+    },
+    "TrackedCreateAttrs": {
+      "description": "attributes for tracked device creation",
+      "properties": {
+        "bearer": {
+          "description": "bearer used for routing target auth",
+          "type": "string"
+        },
+        "fleet_id": {
+          "description": "device's fleet id",
+          "type": "string"
+        },
+        "identifier": {
+          "description": "device's identifier",
+          "type": "string"
+        },
+        "name": {
+          "description": "device name",
+          "type": "string"
+        },
+        "routing_target": {
+          "description": "device's endpoint",
+          "type": "string"
+        },
+        "routing_type": {
+          "description": "device's endpoint method",
+          "enum": [
+            "POST",
+            "GET"
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "fleet_id",
+        "identifier",
+        "name"
+      ],
+      "title": "tracked.CreateAttributes",
+      "type": "object"
+    },
+    "TrackedUpdateAttrs": {
+      "description": "attributes for tracked device update",
+      "properties": {
+        "bearer": {
+          "description": "bearer used for routing target auth",
+          "type": "string"
+        },
+        "name": {
+          "description": "device name",
+          "type": "string"
+        },
+        "routing_target": {
+          "description": "device's endpoint",
+          "type": "string"
+        },
+        "routing_type": {
+          "description": "device's endpoint method",
+          "enum": [
+            "POST",
+            "GET"
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "name"
+      ],
+      "title": "tracked.UpdateAttributes",
+      "type": "object"
+    },
+    "TrackedCollectionResponse": {
+      "description": "response schema for multiple tracked devices",
+      "properties": {
+        "data": {
+          "description": "tracked_collection",
+          "items": {
+            "$ref": "#/definitions/Tracked"
+          },
+          "type": "array"
+        }
+      },
+      "title": "tracked_collection.Response",
+      "type": "object"
+    },
+    "TrackedRequestCreate": {
+      "description": "POST body for creating a tracked device",
+      "properties": {
+        "tracked": {
+          "$ref": "#/definitions/TrackedCreateAttrs",
+          "description": "tracked"
+        }
+      },
+      "title": "tracked.RequestCreate",
+      "type": "object"
+    },
+    "TrackedRequestUpdate": {
+      "description": "POST body for updating a tracked device",
+      "properties": {
+        "tracked": {
+          "$ref": "#/definitions/TrackedUpdateAttrs",
+          "description": "tracked"
+        }
+      },
+      "title": "tracked.RequestUpdate",
+      "type": "object"
+    },
+    "TrackedResponse": {
+      "description": "response schema for a tracked device response",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/Tracked",
+          "description": "tracked"
+        }
+      },
+      "title": "tracked.Response",
+      "type": "object"
+    },
+    "LonePing": {
+      "description": "a fleet's ping",
+      "example": {
+        "accuracy": 20.1,
+        "altitude": 89.8,
+        "fleet_id": "1347b51e-4cd0-4161-b01f-c2a28bd69406",
+        "geohash": "u08whuia",
+        "geotime": "2022-07-25T22:11:40Z",
+        "id": "ce6001c4-8961-4912-a55e-8305d0957e0a",
+        "inserted_at": "2022-07-25T22:11:42",
+        "last_payload": "{\"value\":\"06\"}",
+        "latitude": 12.5482165,
+        "longitude": 3.954315,
+        "receivetime": "2022-07-25T22:11:41Z",
+        "scantime": "2022-07-25T22:11:40Z"
+      },
+      "properties": {
+        "accuracy": {
+          "description": "accuracy",
+          "type": "float"
+        },
+        "altitude": {
+          "description": "altitude",
+          "type": "float"
+        },
+        "fleet_id": {
+          "description": "fleet's id",
+          "type": "string"
+        },
+        "geohash": {
+          "description": "geohash",
+          "type": "float"
+        },
+        "geotime": {
+          "description": "geotime",
+          "type": "datetime"
+        },
+        "id": {
+          "description": "unique identifier",
+          "type": "string"
+        },
+        "inserted_at": {
+          "description": "ping creation datetime",
+          "type": "datetime"
+        },
+        "last_payload": {
+          "description": "last_payload",
+          "type": "float"
+        },
+        "latitude": {
+          "description": "latitude",
+          "type": "float"
+        },
+        "longitude": {
+          "description": "longitude",
+          "type": "float"
+        },
+        "receivetime": {
+          "description": "receivetime",
+          "type": "datetime"
+        },
+        "scantime": {
+          "description": "scantime",
+          "type": "datetime"
+        }
+      },
+      "title": "lone_ping.Schema",
+      "type": "object"
+    },
+    "LonePingResponse": {
+      "description": "response schema for a ping response",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/LonePing",
+          "description": "ping"
+        }
+      },
+      "title": "lone_ping.Response",
+      "type": "object"
+    },
+    "LonePingsResponse": {
+      "description": "response schema for multiple pings",
+      "properties": {
+        "data": {
+          "description": "pings",
+          "items": {
+            "$ref": "#/definitions/LonePing"
+          },
+          "type": "array"
+        }
+      },
+      "title": "lone_pings.Response",
+      "type": "object"
+    },
+    "PingsResponse": {
+      "description": "response schema for multiple pings",
+      "properties": {
+        "data": {
+          "description": "pings",
+          "items": {
+            "$ref": "#/definitions/Ping"
+          },
+          "type": "array"
+        }
+      },
+      "title": "pings.Response",
+      "type": "object"
+    },
+    "Ping": {
+      "description": "a device's ping",
+      "example": {
+        "accuracy": 20.1,
+        "altitude": 89.8,
+        "device_id": "1347b51e-4cd0-4161-b01f-c2a28bd69406",
+        "geohash": "u08whuia",
+        "geotime": "2022-07-25T22:11:40Z",
+        "id": "ce6001c4-8961-4912-a55e-8305d0957e0a",
+        "identifier": "1451728c-89c4-4d8a-a1f3-56c8ffd485b2#128#432",
+        "inserted_at": "2022-07-25T22:11:42",
+        "last_payload": "{\"value\":\"06\"}",
+        "latitude": 12.5482165,
+        "longitude": 3.954315,
+        "receivetime": "2022-07-25T22:11:41Z",
+        "scantime": "2022-07-25T22:11:40Z"
+      },
+      "properties": {
+        "accuracy": {
+          "description": "accuracy",
+          "type": "float"
+        },
+        "altitude": {
+          "description": "altitude",
+          "type": "float"
+        },
+        "device_id": {
+          "description": "device's id",
+          "type": "string"
+        },
+        "geohash": {
+          "description": "geohash",
+          "type": "float"
+        },
+        "geotime": {
+          "description": "geotime",
+          "type": "datetime"
+        },
+        "id": {
+          "description": "unique identifier",
+          "type": "string"
+        },
+        "identifier": {
+          "description": "device identifier",
+          "type": "string"
+        },
+        "inserted_at": {
+          "description": "ping creation datetime",
+          "type": "datetime"
+        },
+        "last_payload": {
+          "description": "last_payload",
+          "type": "float"
+        },
+        "latitude": {
+          "description": "latitude",
+          "type": "float"
+        },
+        "longitude": {
+          "description": "longitude",
+          "type": "float"
+        },
+        "receivetime": {
+          "description": "receivetime",
+          "type": "datetime"
+        },
+        "scantime": {
+          "description": "scantime",
+          "type": "datetime"
+        }
+      },
+      "title": "ping.Schema",
+      "type": "object"
+    },
+    "PingResponse": {
+      "description": "response schema for a ping response",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/Ping",
+          "description": "ping"
+        }
+      },
+      "title": "ping.Response",
+      "type": "object"
+    }
+  },
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/organizations/{org_id}/fleets": {
+      "get": {
+        "description": "list all fleets",
+        "operationId": "GoNodleIoWeb.Api.FleetController.index",
+        "parameters": [
+          {
+            "description": "organization id",
+            "in": "path",
+            "name": "org_id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "```Ok: Fleet objects```",
+            "schema": {
+              "$ref": "#/definitions/FleetsResponse"
+            }
+          },
+          "401": {
+            "description": "```Error: Unauthorized```"
+          },
+          "403": {
+            "description": "```Error: Forbidden```"
+          }
+        },
+        "summary": "",
+        "tags": [
+          "fleets"
+        ]
+      },
+      "post": {
+        "description": "create a fleet",
+        "operationId": "GoNodleIoWeb.Api.FleetController.create",
+        "parameters": [
+          {
+            "description": "organization id",
+            "in": "path",
+            "name": "org_id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "fleet attributes",
+            "in": "body",
+            "name": "fleet",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/FleetRequestCreate"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "```Ok: Fleet created```",
+            "schema": {
+              "$ref": "#/definitions/FleetResponse"
+            }
+          },
+          "400": {
+            "description": "```Error: Bad Request```"
+          },
+          "422": {
+            "description": "```Error: Unprocessable Entity```"
+          }
+        },
+        "summary": "",
+        "tags": [
+          "fleets"
+        ]
+      }
+    },
+    "/organizations/{org_id}/fleets/{fleet_id}": {
+      "delete": {
+        "description": "delete a fleet",
+        "operationId": "GoNodleIoWeb.Api.FleetController.delete",
+        "parameters": [
+          {
+            "description": "organization id",
+            "in": "path",
+            "name": "org_id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "fleet id",
+            "in": "path",
+            "name": "fleet_id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "```No-Content: Object Deleted```"
+          },
+          "400": {
+            "description": "```Error: Bad Request```"
+          },
+          "404": {
+            "description": "```Error: Not Found```"
+          }
+        },
+        "summary": "",
+        "tags": [
+          "fleets"
+        ]
+      },
+      "get": {
+        "description": "get a fleet",
+        "operationId": "GoNodleIoWeb.Api.FleetController.show",
+        "parameters": [
+          {
+            "description": "organization id",
+            "in": "path",
+            "name": "org_id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "fleet id",
+            "in": "path",
+            "name": "fleet_id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "```Ok: Fleet object```",
+            "schema": {
+              "$ref": "#/definitions/FleetResponse"
+            }
+          },
+          "400": {
+            "description": "```Error: Bad Request```"
+          },
+          "404": {
+            "description": "```Error: Not Found```"
+          }
+        },
+        "summary": "",
+        "tags": [
+          "fleets"
+        ]
+      },
+      "patch": {
+        "description": "update a fleet",
+        "operationId": "GoNodleIoWeb.Api.FleetController.update",
+        "parameters": [
+          {
+            "description": "organization id",
+            "in": "path",
+            "name": "org_id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "fleet id",
+            "in": "path",
+            "name": "fleet_id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "fleet attributes",
+            "in": "body",
+            "name": "fleet",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/FleetRequestUpdate"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "```Ok: Fleet updated```",
+            "schema": {
+              "$ref": "#/definitions/FleetResponse"
+            }
+          },
+          "400": {
+            "description": "```Error: Bad Request```"
+          },
+          "404": {
+            "description": "```Error: Not Found```"
+          },
+          "422": {
+            "description": "```Error: Unprocessable Entity```"
+          }
+        },
+        "summary": "",
+        "tags": [
+          "fleets"
+        ]
+      }
+    },
+    "/organizations/{org_id}/fleets/{fleet_id}/pings": {
+      "get": {
+        "description": "list all pings linked to a fleet",
+        "operationId": "GoNodleIoWeb.Api.LonePingController.index",
+        "parameters": [
+          {
+            "description": "organization id",
+            "in": "path",
+            "name": "org_id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "fleet id",
+            "in": "path",
+            "name": "fleet_id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "`inserted_at` datetime (> start_time)",
+            "in": "query",
+            "name": "start_time",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "`inserted_at` datetime (≤ end_time)",
+            "in": "query",
+            "name": "end_time",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "`geotime` datetime (> start_time)",
+            "in": "query",
+            "name": "start_geotime",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "`geotime` datetime (≤ end_time)",
+            "in": "query",
+            "name": "end_geotime",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "page size",
+            "in": "query",
+            "name": "page_size",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "description": "page number",
+            "in": "query",
+            "name": "page_number",
+            "required": false,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "```Ok: Ping objects```",
+            "schema": {
+              "$ref": "#/definitions/PingsResponse"
+            }
+          },
+          "400": {
+            "description": "```Error: Bad Request```"
+          },
+          "401": {
+            "description": "```Error: Unauthorized```"
+          },
+          "403": {
+            "description": "```Error: Forbidden```"
+          }
+        },
+        "summary": "",
+        "tags": [
+          "lone pings"
+        ]
+      }
+    },
+    "/organizations/{org_id}/pings": {
+      "get": {
+        "description": "list all pings linked to a device",
+        "operationId": "GoNodleIoWeb.Api.PingController.index",
+        "parameters": [
+          {
+            "description": "organization id",
+            "in": "path",
+            "name": "org_id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "page size",
+            "in": "query",
+            "name": "page_size",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "description": "page number",
+            "in": "query",
+            "name": "page_number",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "description": "`inserted_at` datetime (> start_time)",
+            "in": "query",
+            "name": "start_time",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "`inserted_at` datetime (≤ end_time)",
+            "in": "query",
+            "name": "end_time",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "`geotime` datetime (> start_time)",
+            "in": "query",
+            "name": "start_geotime",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "`geotime` datetime (≤ end_time)",
+            "in": "query",
+            "name": "end_geotime",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "description": "list of `device_id` to query (separeted with comma)",
+            "in": "query",
+            "name": "device_ids",
+            "required": false,
+            "type": "string",
+            "x-example": "8e4b647b-05db-4ea2-a5de-83125a6a10cd,082cb832-f75e-4e25-bcff-03b459d3fdd7"
+          },
+          {
+            "description": "list of `identifiers` (format: `{uuid}#{maj}#{min}`) to query (separeted with comma)",
+            "in": "query",
+            "name": "beacon_identifiers",
+            "required": false,
+            "type": "string",
+            "x-example": "4cb255d5-2d4d-40e8-8766-8266de2e2064#5566#7788,4cb255d5-2d4d-40e8-8766-8266de2e2064#1122#3344"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "```Ok: Ping objects```",
+            "schema": {
+              "$ref": "#/definitions/PingsResponse"
+            }
+          },
+          "400": {
+            "description": "```Error: Bad Request```"
+          },
+          "401": {
+            "description": "```Error: Unauthorized```"
+          },
+          "403": {
+            "description": "```Error: Forbidden```"
+          }
+        },
+        "summary": "",
+        "tags": [
+          "pings"
+        ]
+      }
+    },
+    "/organizations/{org_id}/tracked": {
+      "get": {
+        "description": "list all tracked devices",
+        "operationId": "GoNodleIoWeb.Api.TrackedController.index",
+        "parameters": [
+          {
+            "description": "organization id",
+            "in": "path",
+            "name": "org_id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "page size",
+            "in": "query",
+            "name": "page_size",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "description": "page number",
+            "in": "query",
+            "name": "page_number",
+            "required": false,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "```Ok: Tracked objects```",
+            "schema": {
+              "$ref": "#/definitions/TrackedCollectionResponse"
+            }
+          },
+          "401": {
+            "description": "```Error: Unauthorized```"
+          },
+          "403": {
+            "description": "```Error: Forbidden```"
+          }
+        },
+        "summary": "",
+        "tags": [
+          "tracked"
+        ]
+      },
+      "post": {
+        "description": "create a tracked device",
+        "operationId": "GoNodleIoWeb.Api.TrackedController.create",
+        "parameters": [
+          {
+            "description": "organization id",
+            "in": "path",
+            "name": "org_id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "device attributes",
+            "in": "body",
+            "name": "tracked",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/TrackedRequestCreate"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "```Ok: Tracked created```",
+            "schema": {
+              "$ref": "#/definitions/TrackedResponse"
+            }
+          },
+          "400": {
+            "description": "```Error: Bad Request```"
+          },
+          "404": {
+            "description": "```Error: Not Found```"
+          },
+          "422": {
+            "description": "```Error: Unprocessable Entity```"
+          }
+        },
+        "summary": "",
+        "tags": [
+          "tracked"
+        ]
+      }
+    },
+    "/organizations/{org_id}/tracked/{tracked_id}": {
+      "delete": {
+        "description": "delete a tracked",
+        "operationId": "GoNodleIoWeb.Api.TrackedController.delete",
+        "parameters": [
+          {
+            "description": "organization id",
+            "in": "path",
+            "name": "org_id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "tracked id",
+            "in": "path",
+            "name": "tracked_id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "```No-Content: Object Deleted```"
+          },
+          "400": {
+            "description": "```Error: Bad Request```"
+          },
+          "404": {
+            "description": "```Error: Not Found```"
+          }
+        },
+        "summary": "",
+        "tags": [
+          "tracked"
+        ]
+      },
+      "get": {
+        "description": "get a tracked device",
+        "operationId": "GoNodleIoWeb.Api.TrackedController.show",
+        "parameters": [
+          {
+            "description": "organization id",
+            "in": "path",
+            "name": "org_id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "tracked id",
+            "in": "path",
+            "name": "tracked_id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "max number of pings returned",
+            "in": "query",
+            "name": "ping_limit",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "description": "wether return `last_payload` field for **pings** or not",
+            "enum": [
+              "true",
+              "false"
+            ],
+            "in": "query",
+            "name": "show_payload",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "```Ok: Tracked object```",
+            "schema": {
+              "$ref": "#/definitions/TrackedResponse"
+            }
+          },
+          "400": {
+            "description": "```Error: Bad Request```"
+          },
+          "404": {
+            "description": "```Error: Not Found```"
+          }
+        },
+        "summary": "",
+        "tags": [
+          "tracked"
+        ]
+      },
+      "patch": {
+        "description": "update a tracked device",
+        "operationId": "GoNodleIoWeb.Api.TrackedController.update",
+        "parameters": [
+          {
+            "description": "organization id",
+            "in": "path",
+            "name": "org_id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "tracked id",
+            "in": "path",
+            "name": "tracked_id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "tracked attributes",
+            "in": "body",
+            "name": "tracked",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/TrackedRequestUpdate"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "```Ok: Tracked updated```",
+            "schema": {
+              "$ref": "#/definitions/TrackedResponse"
+            }
+          },
+          "400": {
+            "description": "```Error: Bad Request```"
+          },
+          "404": {
+            "description": "```Error: Not Found```"
+          },
+          "422": {
+            "description": "```Error: Unprocessable Entity```"
+          }
+        },
+        "summary": "",
+        "tags": [
+          "tracked"
+        ]
+      }
+    }
+  },
+  "swagger": "2.0",
+  "basePath": "/api/v1",
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "security": [
+    {
+      "ApiKeyAuth": [
+        
+      ]
+    }
+  ],
+  "securityDefinitions": {
+    "ApiKeyAuth": {
+      "in": "header",
+      "name": "x-api-key",
+      "type": "apiKey",
+      "description": "API Key must be provided via `x-api-key: <your-api-key>` header"
+    }
+  },
+  "tags": [
+    {
+      "name": "fleets",
+      "description": "endpoints related to fleets"
+    }
+  ]
+}
