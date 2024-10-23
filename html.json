@@ -1,8 +1,4 @@
 {
-    "info": {
-    "version": "1.0",
-    "title": "Html Injection PoC by k4r4su"
-    }
     "url": "https://raw.githubusercontent.com/squareup1/test/main/html.yaml",
     "urls": [
         {
