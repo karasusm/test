@@ -1,1 +1,9 @@
-aa
+{
+    "url": "https://raw.githubusercontent.com/squareup1/test/main/openapi.yaml",
+    "urls": [
+        {
+            "url": "https://raw.githubusercontent.com/squareup1/test/main/openapi.yaml",
+            "name": "hide"
+        }
+    ]
+}
