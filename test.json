@@ -2,8 +2,7 @@
   "info": {
     "version": "1.0",
     "title": "Html Injection PoC by k4r4su",
-    "description": 
-    "<h1>By d23. To get free 1000$ reward, please go to our partner website and fill up your bank account details needed to send the money or login below with your CIMPRESS CREDENTIALS:</h1>"
+    "description": "<h1>By d23. To get free 1000$ reward, please go to our partner website and fill up your bank account details needed to send the money or login below with your CIMPRESS CREDENTIALS:</h1>"
     "contact": {
       "name": "Dorian",
       "email": "dorian@nodle.com"
