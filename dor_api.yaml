@@ -1,0 +1,3174 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "",
+    "title": "HTML Injection by k4r4su",
+    "version": "12.2.12"
+  },
+  "host": "data-api.treehouse.finance:443",
+  "basePath": "/",
+  "schemes": [
+    "https"
+  ],
+  "consumes": [
+    "application/json",
+    "application/vnd.pgrst.object+json;nulls=stripped",
+    "application/vnd.pgrst.object+json",
+    "text/csv"
+  ],
+  "produces": [
+    "application/json",
+    "application/vnd.pgrst.object+json;nulls=stripped",
+    "application/vnd.pgrst.object+json",
+    "text/csv"
+  ],
+  "paths": {
+    "/": {
+      "get": {
+        "produces": [
+          "application/openapi+json",
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "summary": "OpenAPI description (this document)",
+        "tags": [
+          "Introspection"
+        ]
+      }
+    },
+    "/last_day_esr": {
+      "get": {
+        "parameters": [
+          {
+            "$ref": "#/parameters/rowFilter.last_day_esr.date"
+          },
+          {
+            "$ref": "#/parameters/rowFilter.last_day_esr.esr"
+          },
+          {
+            "$ref": "#/parameters/select"
+          },
+          {
+            "$ref": "#/parameters/order"
+          },
+          {
+            "$ref": "#/parameters/range"
+          },
+          {
+            "$ref": "#/parameters/rangeUnit"
+          },
+          {
+            "$ref": "#/parameters/offset"
+          },
+          {
+            "$ref": "#/parameters/limit"
+          },
+          {
+            "$ref": "#/parameters/preferCount"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "items": {
+                "$ref": "#/definitions/last_day_esr"
+              },
+              "type": "array"
+            }
+          },
+          "206": {
+            "description": "Partial Content"
+          }
+        },
+        "summary": "The latest ESR value calculated with real on-chain data",
+        "tags": [
+          "last_day_esr"
+        ]
+      }
+    },
+    "/esr_pdv_pan_lb": {
+      "get": {
+        "parameters": [
+          {
+            "$ref": "#/parameters/rowFilter.esr_pdv_pan_lb.rank"
+          },
+          {
+            "$ref": "#/parameters/rowFilter.esr_pdv_pan_lb.name"
+          },
+          {
+            "$ref": "#/parameters/rowFilter.esr_pdv_pan_lb.website"
+          },
+          {
+            "$ref": "#/parameters/rowFilter.esr_pdv_pan_lb.company_background"
+          },
+          {
+            "$ref": "#/parameters/rowFilter.esr_pdv_pan_lb.company_logo"
+          },
+          {
+            "$ref": "#/parameters/rowFilter.esr_pdv_pan_lb.x_link"
+          },
+          {
+            "$ref": "#/parameters/rowFilter.esr_pdv_pan_lb.participation_rate"
+          },
+          {
+            "$ref": "#/parameters/rowFilter.esr_pdv_pan_lb.mae"
+          },
+          {
+            "$ref": "#/parameters/select"
+          },
+          {
+            "$ref": "#/parameters/order"
+          },
+          {
+            "$ref": "#/parameters/range"
+          },
+          {
+            "$ref": "#/parameters/rangeUnit"
+          },
+          {
+            "$ref": "#/parameters/offset"
+          },
+          {
+            "$ref": "#/parameters/limit"
+          },
+          {
+            "$ref": "#/parameters/preferCount"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "items": {
+                "$ref": "#/definitions/esr_pdv_pan_lb"
+              },
+              "type": "array"
+            }
+          },
+          "206": {
+            "description": "Partial Content"
+          }
+        },
+        "tags": [
+          "esr_pdv_pan_lb"
+        ]
+      }
+    },
+    "/consensus_reference": {
+      "get": {
+        "parameters": [
+          {
+            "$ref": "#/parameters/rowFilter.consensus_reference.dor_id"
+          },
+          {
+            "$ref": "#/parameters/rowFilter.consensus_reference.round_id"
+          },
+          {
+            "$ref": "#/parameters/rowFilter.consensus_reference.tenor"
+          },
+          {
+            "$ref": "#/parameters/rowFilter.consensus_reference.date"
+          },
+          {
+            "$ref": "#/parameters/rowFilter.consensus_reference.consensus_value"
+          },
+          {
+            "$ref": "#/parameters/rowFilter.consensus_reference.reference_value"
+          },
+          {
+            "$ref": "#/parameters/select"
+          },
+          {
+            "$ref": "#/parameters/order"
+          },
+          {
+            "$ref": "#/parameters/range"
+          },
+          {
+            "$ref": "#/parameters/rangeUnit"
+          },
+          {
+            "$ref": "#/parameters/offset"
+          },
+          {
+            "$ref": "#/parameters/limit"
+          },
+          {
+            "$ref": "#/parameters/preferCount"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "items": {
+                "$ref": "#/definitions/consensus_reference"
+              },
+              "type": "array"
+            }
+          },
+          "206": {
+            "description": "Partial Content"
+          }
+        },
+        "tags": [
+          "consensus_reference"
+        ]
+      }
+    },
+    "/participation_history": {
+      "get": {
+        "parameters": [
+          {
+            "$ref": "#/parameters/rowFilter.participation_history.panelist_id"
+          },
+          {
+            "$ref": "#/parameters/rowFilter.participation_history.participation_map_id"
+          },
+          {
+            "$ref": "#/parameters/rowFilter.participation_history.dor_id"
+          },
+          {
+            "$ref": "#/parameters/rowFilter.participation_history.tenor"
+          },
+          {
+            "$ref": "#/parameters/rowFilter.participation_history.round_id"
+          },
+          {
+            "$ref": "#/parameters/rowFilter.participation_history.round_end_date"
+          },
+          {
+            "$ref": "#/parameters/rowFilter.participation_history.expected"
+          },
+          {
+            "$ref": "#/parameters/rowFilter.participation_history.participated"
+          },
+          {
+            "$ref": "#/parameters/select"
+          },
+          {
+            "$ref": "#/parameters/order"
+          },
+          {
+            "$ref": "#/parameters/range"
+          },
+          {
+            "$ref": "#/parameters/rangeUnit"
+          },
+          {
+            "$ref": "#/parameters/offset"
+          },
+          {
+            "$ref": "#/parameters/limit"
+          },
+          {
+            "$ref": "#/parameters/preferCount"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "items": {
+                "$ref": "#/definitions/participation_history"
+              },
+              "type": "array"
+            }
+          },
+          "206": {
+            "description": "Partial Content"
+          }
+        },
+        "tags": [
+          "participation_history"
+        ]
+      }
+    },
+    "/day_esr": {
+      "get": {
+        "parameters": [
+          {
+            "$ref": "#/parameters/rowFilter.day_esr.date"
+          },
+          {
+            "$ref": "#/parameters/rowFilter.day_esr.pr"
+          },
+          {
+            "$ref": "#/parameters/rowFilter.day_esr.ar"
+          },
+          {
+            "$ref": "#/parameters/rowFilter.day_esr.sc"
+          },
+          {
+            "$ref": "#/parameters/rowFilter.day_esr.cr"
+          },
+          {
+            "$ref": "#/parameters/rowFilter.day_esr.er"
+          },
+          {
+            "$ref": "#/parameters/rowFilter.day_esr.s"
+          },
+          {
+            "$ref": "#/parameters/rowFilter.day_esr.pa"
+          },
+          {
+            "$ref": "#/parameters/rowFilter.day_esr.psy"
+          },
+          {
+            "$ref": "#/parameters/rowFilter.day_esr.psl"
+          },
+          {
+            "$ref": "#/parameters/rowFilter.day_esr.tot_earn"
+          },
+          {
+            "$ref": "#/parameters/rowFilter.day_esr.avg_bal"
+          },
+          {
+            "$ref": "#/parameters/rowFilter.day_esr.esr"
+          },
+          {
+            "$ref": "#/parameters/rowFilter.day_esr.esr_no_mev"
+          },
+          {
+            "$ref": "#/parameters/select"
+          },
+          {
+            "$ref": "#/parameters/order"
+          },
+          {
+            "$ref": "#/parameters/range"
+          },
+          {
+            "$ref": "#/parameters/rangeUnit"
+          },
+          {
+            "$ref": "#/parameters/offset"
+          },
+          {
+            "$ref": "#/parameters/limit"
+          },
+          {
+            "$ref": "#/parameters/preferCount"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "items": {
+                "$ref": "#/definitions/day_esr"
+              },
+              "type": "array"
+            }
+          },
+          "206": {
+            "description": "Partial Content"
+          }
+        },
+        "tags": [
+          "day_esr"
+        ]
+      }
+    },
+    "/sub_hist_esr": {
+      "get": {
+        "parameters": [
+          {
+            "$ref": "#/parameters/rowFilter.sub_hist_esr.panelist_name"
+          },
+          {
+            "$ref": "#/parameters/rowFilter.sub_hist_esr.panelist_id"
+          },
+          {
+            "$ref": "#/parameters/rowFilter.sub_hist_esr.round_id"
+          },
+          {
+            "$ref": "#/parameters/rowFilter.sub_hist_esr.round_date"
+          },
+          {
+            "$ref": "#/parameters/rowFilter.sub_hist_esr.tenor_1d_date"
+          },
+          {
+            "$ref": "#/parameters/rowFilter.sub_hist_esr.spot_submitted_rate"
+          },
+          {
+            "$ref": "#/parameters/rowFilter.sub_hist_esr.spot_outcome"
+          },
+          {
+            "$ref": "#/parameters/rowFilter.sub_hist_esr.tenor_1d_submitted_rate"
+          },
+          {
+            "$ref": "#/parameters/rowFilter.sub_hist_esr.tenor_1d_outcome"
+          },
+          {
+            "$ref": "#/parameters/rowFilter.sub_hist_esr.tenor_7d_date"
+          },
+          {
+            "$ref": "#/parameters/rowFilter.sub_hist_esr.tenor_7d_submitted_rate"
+          },
+          {
+            "$ref": "#/parameters/rowFilter.sub_hist_esr.tenor_7d_outcome"
+          },
+          {
+            "$ref": "#/parameters/rowFilter.sub_hist_esr.tenor_30d_date"
+          },
+          {
+            "$ref": "#/parameters/rowFilter.sub_hist_esr.tenor_30d_submitted_rate"
+          },
+          {
+            "$ref": "#/parameters/rowFilter.sub_hist_esr.tenor_30d_outcome"
+          },
+          {
+            "$ref": "#/parameters/select"
+          },
+          {
+            "$ref": "#/parameters/order"
+          },
+          {
+            "$ref": "#/parameters/range"
+          },
+          {
+            "$ref": "#/parameters/rangeUnit"
+          },
+          {
+            "$ref": "#/parameters/offset"
+          },
+          {
+            "$ref": "#/parameters/limit"
+          },
+          {
+            "$ref": "#/parameters/preferCount"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "items": {
+                "$ref": "#/definitions/sub_hist_esr"
+              },
+              "type": "array"
+            }
+          },
+          "206": {
+            "description": "Partial Content"
+          }
+        },
+        "tags": [
+          "sub_hist_esr"
+        ]
+      }
+    },
+    "/daily_esr": {
+      "get": {
+        "parameters": [
+          {
+            "$ref": "#/parameters/rowFilter.daily_esr.date"
+          },
+          {
+            "$ref": "#/parameters/rowFilter.daily_esr.esr"
+          },
+          {
+            "$ref": "#/parameters/select"
+          },
+          {
+            "$ref": "#/parameters/order"
+          },
+          {
+            "$ref": "#/parameters/range"
+          },
+          {
+            "$ref": "#/parameters/rangeUnit"
+          },
+          {
+            "$ref": "#/parameters/offset"
+          },
+          {
+            "$ref": "#/parameters/limit"
+          },
+          {
+            "$ref": "#/parameters/preferCount"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "items": {
+                "$ref": "#/definitions/daily_esr"
+              },
+              "type": "array"
+            }
+          },
+          "206": {
+            "description": "Partial Content"
+          }
+        },
+        "tags": [
+          "daily_esr"
+        ]
+      }
+    },
+    "/term_consensus": {
+      "get": {
+        "parameters": [
+          {
+            "$ref": "#/parameters/rowFilter.term_consensus.date"
+          },
+          {
+            "$ref": "#/parameters/rowFilter.term_consensus.dor_id"
+          },
+          {
+            "$ref": "#/parameters/rowFilter.term_consensus.spot"
+          },
+          {
+            "$ref": "#/parameters/rowFilter.term_consensus.participated"
+          },
+          {
+            "$ref": "#/parameters/rowFilter.term_consensus.expected"
+          },
+          {
+            "$ref": "#/parameters/rowFilter.term_consensus.participation_rate"
+          },
+          {
+            "$ref": "#/parameters/rowFilter.term_consensus.1d"
+          },
+          {
+            "$ref": "#/parameters/rowFilter.term_consensus.7d"
+          },
+          {
+            "$ref": "#/parameters/rowFilter.term_consensus.30d"
+          },
+          {
+            "$ref": "#/parameters/select"
+          },
+          {
+            "$ref": "#/parameters/order"
+          },
+          {
+            "$ref": "#/parameters/range"
+          },
+          {
+            "$ref": "#/parameters/rangeUnit"
+          },
+          {
+            "$ref": "#/parameters/offset"
+          },
+          {
+            "$ref": "#/parameters/limit"
+          },
+          {
+            "$ref": "#/parameters/preferCount"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "items": {
+                "$ref": "#/definitions/term_consensus"
+              },
+              "type": "array"
+            }
+          },
+          "206": {
+            "description": "Partial Content"
+          }
+        },
+        "tags": [
+          "term_consensus"
+        ]
+      }
+    },
+    "/rpc/hist_day_eb": {
+      "get": {
+        "parameters": [
+          {
+            "format": "date",
+            "in": "query",
+            "name": "start_date",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "format": "date",
+            "in": "query",
+            "name": "end_date",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json",
+          "application/vnd.pgrst.object+json;nulls=stripped",
+          "application/vnd.pgrst.object+json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "(rpc) hist_day_eb"
+        ]
+      },
+      "post": {
+        "parameters": [
+          {
+            "in": "body",
+            "name": "args",
+            "required": true,
+            "schema": {
+              "properties": {
+                "end_date": {
+                  "format": "date",
+                  "type": "string"
+                },
+                "start_date": {
+                  "format": "date",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "start_date",
+                "end_date"
+              ],
+              "type": "object"
+            }
+          },
+          {
+            "$ref": "#/parameters/preferParams"
+          }
+        ],
+        "produces": [
+          "application/json",
+          "application/vnd.pgrst.object+json;nulls=stripped",
+          "application/vnd.pgrst.object+json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "(rpc) hist_day_eb"
+        ]
+      }
+    },
+    "/rpc/submit_esr_spot": {
+      "get": {
+        "parameters": [
+          {
+            "format": "double precision",
+            "in": "query",
+            "name": "esr",
+            "required": true,
+            "type": "number"
+          },
+          {
+            "format": "integer",
+            "in": "query",
+            "name": "dor",
+            "required": false,
+            "type": "integer"
+          }
+        ],
+        "produces": [
+          "application/json",
+          "application/vnd.pgrst.object+json;nulls=stripped",
+          "application/vnd.pgrst.object+json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "(rpc) submit_esr_spot"
+        ]
+      },
+      "post": {
+        "parameters": [
+          {
+            "in": "body",
+            "name": "args",
+            "required": true,
+            "schema": {
+              "properties": {
+                "dor": {
+                  "format": "integer",
+                  "type": "integer"
+                },
+                "esr": {
+                  "format": "double precision",
+                  "type": "number"
+                }
+              },
+              "required": [
+                "esr"
+              ],
+              "type": "object"
+            }
+          },
+          {
+            "$ref": "#/parameters/preferParams"
+          }
+        ],
+        "produces": [
+          "application/json",
+          "application/vnd.pgrst.object+json;nulls=stripped",
+          "application/vnd.pgrst.object+json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "(rpc) submit_esr_spot"
+        ]
+      }
+    },
+    "/rpc/day_esr_calc": {
+      "get": {
+        "parameters": [
+          {
+            "format": "double precision",
+            "in": "query",
+            "name": "pa",
+            "required": false,
+            "type": "number"
+          },
+          {
+            "format": "double precision",
+            "in": "query",
+            "name": "psy",
+            "required": false,
+            "type": "number"
+          },
+          {
+            "format": "double precision",
+            "in": "query",
+            "name": "psl",
+            "required": false,
+            "type": "number"
+          },
+          {
+            "format": "double precision",
+            "in": "query",
+            "name": "s",
+            "required": false,
+            "type": "number"
+          },
+          {
+            "format": "double precision",
+            "in": "query",
+            "name": "er",
+            "required": false,
+            "type": "number"
+          },
+          {
+            "format": "double precision",
+            "in": "query",
+            "name": "eb",
+            "required": false,
+            "type": "number"
+          }
+        ],
+        "produces": [
+          "application/json",
+          "application/vnd.pgrst.object+json;nulls=stripped",
+          "application/vnd.pgrst.object+json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "(rpc) day_esr_calc"
+        ]
+      },
+      "post": {
+        "parameters": [
+          {
+            "in": "body",
+            "name": "args",
+            "required": true,
+            "schema": {
+              "properties": {
+                "eb": {
+                  "format": "double precision",
+                  "type": "number"
+                },
+                "er": {
+                  "format": "double precision",
+                  "type": "number"
+                },
+                "pa": {
+                  "format": "double precision",
+                  "type": "number"
+                },
+                "psl": {
+                  "format": "double precision",
+                  "type": "number"
+                },
+                "psy": {
+                  "format": "double precision",
+                  "type": "number"
+                },
+                "s": {
+                  "format": "double precision",
+                  "type": "number"
+                }
+              },
+              "type": "object"
+            }
+          },
+          {
+            "$ref": "#/parameters/preferParams"
+          }
+        ],
+        "produces": [
+          "application/json",
+          "application/vnd.pgrst.object+json;nulls=stripped",
+          "application/vnd.pgrst.object+json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "(rpc) day_esr_calc"
+        ]
+      }
+    },
+    "/rpc/panelist_sub_info": {
+      "get": {
+        "parameters": [
+          {
+            "format": "integer",
+            "in": "query",
+            "name": "panelist",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "format": "integer",
+            "in": "query",
+            "name": "dor_id",
+            "required": false,
+            "type": "integer"
+          }
+        ],
+        "produces": [
+          "application/json",
+          "application/vnd.pgrst.object+json;nulls=stripped",
+          "application/vnd.pgrst.object+json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "(rpc) panelist_sub_info"
+        ]
+      },
+      "post": {
+        "parameters": [
+          {
+            "in": "body",
+            "name": "args",
+            "required": true,
+            "schema": {
+              "properties": {
+                "dor_id": {
+                  "format": "integer",
+                  "type": "integer"
+                },
+                "panelist": {
+                  "format": "integer",
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "panelist"
+              ],
+              "type": "object"
+            }
+          },
+          {
+            "$ref": "#/parameters/preferParams"
+          }
+        ],
+        "produces": [
+          "application/json",
+          "application/vnd.pgrst.object+json;nulls=stripped",
+          "application/vnd.pgrst.object+json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "(rpc) panelist_sub_info"
+        ]
+      }
+    },
+    "/rpc/esr_round_date": {
+      "get": {
+        "parameters": [
+          {
+            "format": "integer",
+            "in": "query",
+            "name": "round",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "produces": [
+          "application/json",
+          "application/vnd.pgrst.object+json;nulls=stripped",
+          "application/vnd.pgrst.object+json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "(rpc) esr_round_date"
+        ]
+      },
+      "post": {
+        "parameters": [
+          {
+            "in": "body",
+            "name": "args",
+            "required": true,
+            "schema": {
+              "properties": {
+                "round": {
+                  "format": "integer",
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "round"
+              ],
+              "type": "object"
+            }
+          },
+          {
+            "$ref": "#/parameters/preferParams"
+          }
+        ],
+        "produces": [
+          "application/json",
+          "application/vnd.pgrst.object+json;nulls=stripped",
+          "application/vnd.pgrst.object+json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "(rpc) esr_round_date"
+        ]
+      }
+    },
+    "/rpc/esr_round_id": {
+      "get": {
+        "parameters": [
+          {
+            "format": "date",
+            "in": "query",
+            "name": "round_date",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json",
+          "application/vnd.pgrst.object+json;nulls=stripped",
+          "application/vnd.pgrst.object+json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "(rpc) esr_round_id"
+        ]
+      },
+      "post": {
+        "parameters": [
+          {
+            "in": "body",
+            "name": "args",
+            "required": true,
+            "schema": {
+              "properties": {
+                "round_date": {
+                  "format": "date",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "round_date"
+              ],
+              "type": "object"
+            }
+          },
+          {
+            "$ref": "#/parameters/preferParams"
+          }
+        ],
+        "produces": [
+          "application/json",
+          "application/vnd.pgrst.object+json;nulls=stripped",
+          "application/vnd.pgrst.object+json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "(rpc) esr_round_id"
+        ]
+      }
+    },
+    "/rpc/esr_round_0_date": {
+      "get": {
+        "produces": [
+          "application/json",
+          "application/vnd.pgrst.object+json;nulls=stripped",
+          "application/vnd.pgrst.object+json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "(rpc) esr_round_0_date"
+        ]
+      },
+      "post": {
+        "parameters": [
+          {
+            "in": "body",
+            "name": "args",
+            "required": true,
+            "schema": {
+              "type": "object"
+            }
+          },
+          {
+            "$ref": "#/parameters/preferParams"
+          }
+        ],
+        "produces": [
+          "application/json",
+          "application/vnd.pgrst.object+json;nulls=stripped",
+          "application/vnd.pgrst.object+json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "(rpc) esr_round_0_date"
+        ]
+      }
+    },
+    "/rpc/esr_round_start_time": {
+      "get": {
+        "parameters": [
+          {
+            "format": "integer",
+            "in": "query",
+            "name": "round",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "produces": [
+          "application/json",
+          "application/vnd.pgrst.object+json;nulls=stripped",
+          "application/vnd.pgrst.object+json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "(rpc) esr_round_start_time"
+        ]
+      },
+      "post": {
+        "parameters": [
+          {
+            "in": "body",
+            "name": "args",
+            "required": true,
+            "schema": {
+              "properties": {
+                "round": {
+                  "format": "integer",
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "round"
+              ],
+              "type": "object"
+            }
+          },
+          {
+            "$ref": "#/parameters/preferParams"
+          }
+        ],
+        "produces": [
+          "application/json",
+          "application/vnd.pgrst.object+json;nulls=stripped",
+          "application/vnd.pgrst.object+json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "(rpc) esr_round_start_time"
+        ]
+      }
+    },
+    "/rpc/esr_time_to_round": {
+      "get": {
+        "parameters": [
+          {
+            "format": "timestamp without time zone",
+            "in": "query",
+            "name": "time",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json",
+          "application/vnd.pgrst.object+json;nulls=stripped",
+          "application/vnd.pgrst.object+json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "(rpc) esr_time_to_round"
+        ]
+      },
+      "post": {
+        "parameters": [
+          {
+            "in": "body",
+            "name": "args",
+            "required": true,
+            "schema": {
+              "properties": {
+                "time": {
+                  "format": "timestamp without time zone",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            }
+          },
+          {
+            "$ref": "#/parameters/preferParams"
+          }
+        ],
+        "produces": [
+          "application/json",
+          "application/vnd.pgrst.object+json;nulls=stripped",
+          "application/vnd.pgrst.object+json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "(rpc) esr_time_to_round"
+        ]
+      }
+    },
+    "/rpc/participation_rate": {
+      "get": {
+        "parameters": [
+          {
+            "format": "integer",
+            "in": "query",
+            "name": "dor",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "format": "integer",
+            "in": "query",
+            "name": "panelist",
+            "required": false,
+            "type": "integer"
+          }
+        ],
+        "produces": [
+          "application/json",
+          "application/vnd.pgrst.object+json;nulls=stripped",
+          "application/vnd.pgrst.object+json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "(rpc) participation_rate"
+        ]
+      },
+      "post": {
+        "parameters": [
+          {
+            "in": "body",
+            "name": "args",
+            "required": true,
+            "schema": {
+              "properties": {
+                "dor": {
+                  "format": "integer",
+                  "type": "integer"
+                },
+                "panelist": {
+                  "format": "integer",
+                  "type": "integer"
+                }
+              },
+              "type": "object"
+            }
+          },
+          {
+            "$ref": "#/parameters/preferParams"
+          }
+        ],
+        "produces": [
+          "application/json",
+          "application/vnd.pgrst.object+json;nulls=stripped",
+          "application/vnd.pgrst.object+json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "(rpc) participation_rate"
+        ]
+      }
+    },
+    "/rpc/hist_day_eerr": {
+      "get": {
+        "parameters": [
+          {
+            "format": "date",
+            "in": "query",
+            "name": "start_date",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "format": "date",
+            "in": "query",
+            "name": "end_date",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json",
+          "application/vnd.pgrst.object+json;nulls=stripped",
+          "application/vnd.pgrst.object+json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "(rpc) hist_day_eerr"
+        ]
+      },
+      "post": {
+        "parameters": [
+          {
+            "in": "body",
+            "name": "args",
+            "required": true,
+            "schema": {
+              "properties": {
+                "end_date": {
+                  "format": "date",
+                  "type": "string"
+                },
+                "start_date": {
+                  "format": "date",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "start_date",
+                "end_date"
+              ],
+              "type": "object"
+            }
+          },
+          {
+            "$ref": "#/parameters/preferParams"
+          }
+        ],
+        "produces": [
+          "application/json",
+          "application/vnd.pgrst.object+json;nulls=stripped",
+          "application/vnd.pgrst.object+json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "(rpc) hist_day_eerr"
+        ]
+      }
+    },
+    "/rpc/esr_start_time": {
+      "get": {
+        "produces": [
+          "application/json",
+          "application/vnd.pgrst.object+json;nulls=stripped",
+          "application/vnd.pgrst.object+json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "(rpc) esr_start_time"
+        ]
+      },
+      "post": {
+        "parameters": [
+          {
+            "in": "body",
+            "name": "args",
+            "required": true,
+            "schema": {
+              "type": "object"
+            }
+          },
+          {
+            "$ref": "#/parameters/preferParams"
+          }
+        ],
+        "produces": [
+          "application/json",
+          "application/vnd.pgrst.object+json;nulls=stripped",
+          "application/vnd.pgrst.object+json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "(rpc) esr_start_time"
+        ]
+      }
+    },
+    "/rpc/submit_esr": {
+      "get": {
+        "parameters": [
+          {
+            "format": "integer",
+            "in": "query",
+            "name": "round",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "format": "double precision",
+            "in": "query",
+            "name": "1d",
+            "required": true,
+            "type": "number"
+          },
+          {
+            "format": "double precision",
+            "in": "query",
+            "name": "7d",
+            "required": true,
+            "type": "number"
+          },
+          {
+            "format": "double precision",
+            "in": "query",
+            "name": "30d",
+            "required": true,
+            "type": "number"
+          },
+          {
+            "format": "integer",
+            "in": "query",
+            "name": "dor",
+            "required": false,
+            "type": "integer"
+          }
+        ],
+        "produces": [
+          "application/json",
+          "application/vnd.pgrst.object+json;nulls=stripped",
+          "application/vnd.pgrst.object+json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "(rpc) submit_esr"
+        ]
+      },
+      "post": {
+        "parameters": [
+          {
+            "in": "body",
+            "name": "args",
+            "required": true,
+            "schema": {
+              "properties": {
+                "1d": {
+                  "format": "double precision",
+                  "type": "number"
+                },
+                "30d": {
+                  "format": "double precision",
+                  "type": "number"
+                },
+                "7d": {
+                  "format": "double precision",
+                  "type": "number"
+                },
+                "dor": {
+                  "format": "integer",
+                  "type": "integer"
+                },
+                "round": {
+                  "format": "integer",
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "round",
+                "1d",
+                "7d",
+                "30d"
+              ],
+              "type": "object"
+            }
+          },
+          {
+            "$ref": "#/parameters/preferParams"
+          }
+        ],
+        "produces": [
+          "application/json",
+          "application/vnd.pgrst.object+json;nulls=stripped",
+          "application/vnd.pgrst.object+json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "(rpc) submit_esr"
+        ]
+      }
+    },
+    "/rpc/add_panelist_to_dor": {
+      "get": {
+        "parameters": [
+          {
+            "format": "integer",
+            "in": "query",
+            "name": "panelist",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "format": "integer",
+            "in": "query",
+            "name": "dor",
+            "required": false,
+            "type": "integer"
+          }
+        ],
+        "produces": [
+          "application/json",
+          "application/vnd.pgrst.object+json;nulls=stripped",
+          "application/vnd.pgrst.object+json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "(rpc) add_panelist_to_dor"
+        ]
+      },
+      "post": {
+        "parameters": [
+          {
+            "in": "body",
+            "name": "args",
+            "required": true,
+            "schema": {
+              "properties": {
+                "dor": {
+                  "format": "integer",
+                  "type": "integer"
+                },
+                "panelist": {
+                  "format": "integer",
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "panelist"
+              ],
+              "type": "object"
+            }
+          },
+          {
+            "$ref": "#/parameters/preferParams"
+          }
+        ],
+        "produces": [
+          "application/json",
+          "application/vnd.pgrst.object+json;nulls=stripped",
+          "application/vnd.pgrst.object+json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "(rpc) add_panelist_to_dor"
+        ]
+      }
+    },
+    "/rpc/hist_day_er": {
+      "get": {
+        "parameters": [
+          {
+            "format": "date",
+            "in": "query",
+            "name": "start_date",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "format": "date",
+            "in": "query",
+            "name": "end_date",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json",
+          "application/vnd.pgrst.object+json;nulls=stripped",
+          "application/vnd.pgrst.object+json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "(rpc) hist_day_er"
+        ]
+      },
+      "post": {
+        "parameters": [
+          {
+            "in": "body",
+            "name": "args",
+            "required": true,
+            "schema": {
+              "properties": {
+                "end_date": {
+                  "format": "date",
+                  "type": "string"
+                },
+                "start_date": {
+                  "format": "date",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "start_date",
+                "end_date"
+              ],
+              "type": "object"
+            }
+          },
+          {
+            "$ref": "#/parameters/preferParams"
+          }
+        ],
+        "produces": [
+          "application/json",
+          "application/vnd.pgrst.object+json;nulls=stripped",
+          "application/vnd.pgrst.object+json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "(rpc) hist_day_er"
+        ]
+      }
+    },
+    "/rpc/esr_forward_curve": {
+      "get": {
+        "parameters": [
+          {
+            "format": "date",
+            "in": "query",
+            "name": "round_date",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json",
+          "application/vnd.pgrst.object+json;nulls=stripped",
+          "application/vnd.pgrst.object+json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "(rpc) esr_forward_curve"
+        ]
+      },
+      "post": {
+        "parameters": [
+          {
+            "in": "body",
+            "name": "args",
+            "required": true,
+            "schema": {
+              "properties": {
+                "round_date": {
+                  "format": "date",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "round_date"
+              ],
+              "type": "object"
+            }
+          },
+          {
+            "$ref": "#/parameters/preferParams"
+          }
+        ],
+        "produces": [
+          "application/json",
+          "application/vnd.pgrst.object+json;nulls=stripped",
+          "application/vnd.pgrst.object+json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "(rpc) esr_forward_curve"
+        ]
+      }
+    },
+    "/rpc/epoch_esr": {
+      "get": {
+        "parameters": [
+          {
+            "format": "timestamp without time zone",
+            "in": "query",
+            "name": "timestamp",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json",
+          "application/vnd.pgrst.object+json;nulls=stripped",
+          "application/vnd.pgrst.object+json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "(rpc) epoch_esr"
+        ]
+      },
+      "post": {
+        "parameters": [
+          {
+            "in": "body",
+            "name": "args",
+            "required": true,
+            "schema": {
+              "properties": {
+                "timestamp": {
+                  "format": "timestamp without time zone",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            }
+          },
+          {
+            "$ref": "#/parameters/preferParams"
+          }
+        ],
+        "produces": [
+          "application/json",
+          "application/vnd.pgrst.object+json;nulls=stripped",
+          "application/vnd.pgrst.object+json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "(rpc) epoch_esr"
+        ]
+      }
+    },
+    "/rpc/esr_live_round": {
+      "get": {
+        "produces": [
+          "application/json",
+          "application/vnd.pgrst.object+json;nulls=stripped",
+          "application/vnd.pgrst.object+json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "(rpc) esr_live_round"
+        ]
+      },
+      "post": {
+        "parameters": [
+          {
+            "in": "body",
+            "name": "args",
+            "required": true,
+            "schema": {
+              "type": "object"
+            }
+          },
+          {
+            "$ref": "#/parameters/preferParams"
+          }
+        ],
+        "produces": [
+          "application/json",
+          "application/vnd.pgrst.object+json;nulls=stripped",
+          "application/vnd.pgrst.object+json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "(rpc) esr_live_round"
+        ]
+      }
+    },
+    "/rpc/esr_stats_calc": {
+      "get": {
+        "parameters": [
+          {
+            "format": "date",
+            "in": "query",
+            "name": "start_date",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "format": "date",
+            "in": "query",
+            "name": "end_date",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json",
+          "application/vnd.pgrst.object+json;nulls=stripped",
+          "application/vnd.pgrst.object+json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "(rpc) esr_stats_calc"
+        ]
+      },
+      "post": {
+        "parameters": [
+          {
+            "in": "body",
+            "name": "args",
+            "required": true,
+            "schema": {
+              "properties": {
+                "end_date": {
+                  "format": "date",
+                  "type": "string"
+                },
+                "start_date": {
+                  "format": "date",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "start_date",
+                "end_date"
+              ],
+              "type": "object"
+            }
+          },
+          {
+            "$ref": "#/parameters/preferParams"
+          }
+        ],
+        "produces": [
+          "application/json",
+          "application/vnd.pgrst.object+json;nulls=stripped",
+          "application/vnd.pgrst.object+json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "(rpc) esr_stats_calc"
+        ]
+      }
+    },
+    "/rpc/add_panelist_to_spot": {
+      "get": {
+        "parameters": [
+          {
+            "format": "integer",
+            "in": "query",
+            "name": "panelist",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "format": "integer",
+            "in": "query",
+            "name": "dor",
+            "required": false,
+            "type": "integer"
+          }
+        ],
+        "produces": [
+          "application/json",
+          "application/vnd.pgrst.object+json;nulls=stripped",
+          "application/vnd.pgrst.object+json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "(rpc) add_panelist_to_spot"
+        ]
+      },
+      "post": {
+        "parameters": [
+          {
+            "in": "body",
+            "name": "args",
+            "required": true,
+            "schema": {
+              "properties": {
+                "dor": {
+                  "format": "integer",
+                  "type": "integer"
+                },
+                "panelist": {
+                  "format": "integer",
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "panelist"
+              ],
+              "type": "object"
+            }
+          },
+          {
+            "$ref": "#/parameters/preferParams"
+          }
+        ],
+        "produces": [
+          "application/json",
+          "application/vnd.pgrst.object+json;nulls=stripped",
+          "application/vnd.pgrst.object+json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "(rpc) add_panelist_to_spot"
+        ]
+      }
+    },
+    "/rpc/live_dor_summary": {
+      "get": {
+        "produces": [
+          "application/json",
+          "application/vnd.pgrst.object+json;nulls=stripped",
+          "application/vnd.pgrst.object+json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "(rpc) live_dor_summary"
+        ]
+      },
+      "post": {
+        "parameters": [
+          {
+            "in": "body",
+            "name": "args",
+            "required": true,
+            "schema": {
+              "type": "object"
+            }
+          },
+          {
+            "$ref": "#/parameters/preferParams"
+          }
+        ],
+        "produces": [
+          "application/json",
+          "application/vnd.pgrst.object+json;nulls=stripped",
+          "application/vnd.pgrst.object+json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "(rpc) live_dor_summary"
+        ]
+      }
+    },
+    "/rpc/hist_day_esr": {
+      "get": {
+        "parameters": [
+          {
+            "format": "date",
+            "in": "query",
+            "name": "start_date",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "format": "date",
+            "in": "query",
+            "name": "end_date",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json",
+          "application/vnd.pgrst.object+json;nulls=stripped",
+          "application/vnd.pgrst.object+json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "(rpc) hist_day_esr"
+        ]
+      },
+      "post": {
+        "parameters": [
+          {
+            "in": "body",
+            "name": "args",
+            "required": true,
+            "schema": {
+              "properties": {
+                "end_date": {
+                  "format": "date",
+                  "type": "string"
+                },
+                "start_date": {
+                  "format": "date",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "start_date",
+                "end_date"
+              ],
+              "type": "object"
+            }
+          },
+          {
+            "$ref": "#/parameters/preferParams"
+          }
+        ],
+        "produces": [
+          "application/json",
+          "application/vnd.pgrst.object+json;nulls=stripped",
+          "application/vnd.pgrst.object+json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "(rpc) hist_day_esr"
+        ]
+      }
+    },
+    "/rpc/hist_day_eeth": {
+      "get": {
+        "parameters": [
+          {
+            "format": "date",
+            "in": "query",
+            "name": "start_date",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "format": "date",
+            "in": "query",
+            "name": "end_date",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json",
+          "application/vnd.pgrst.object+json;nulls=stripped",
+          "application/vnd.pgrst.object+json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "(rpc) hist_day_eeth"
+        ]
+      },
+      "post": {
+        "parameters": [
+          {
+            "in": "body",
+            "name": "args",
+            "required": true,
+            "schema": {
+              "properties": {
+                "end_date": {
+                  "format": "date",
+                  "type": "string"
+                },
+                "start_date": {
+                  "format": "date",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "start_date",
+                "end_date"
+              ],
+              "type": "object"
+            }
+          },
+          {
+            "$ref": "#/parameters/preferParams"
+          }
+        ],
+        "produces": [
+          "application/json",
+          "application/vnd.pgrst.object+json;nulls=stripped",
+          "application/vnd.pgrst.object+json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "(rpc) hist_day_eeth"
+        ]
+      }
+    },
+    "/rpc/hist_day_cr": {
+      "get": {
+        "parameters": [
+          {
+            "format": "date",
+            "in": "query",
+            "name": "start_date",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "format": "date",
+            "in": "query",
+            "name": "end_date",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json",
+          "application/vnd.pgrst.object+json;nulls=stripped",
+          "application/vnd.pgrst.object+json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "(rpc) hist_day_cr"
+        ]
+      },
+      "post": {
+        "parameters": [
+          {
+            "in": "body",
+            "name": "args",
+            "required": true,
+            "schema": {
+              "properties": {
+                "end_date": {
+                  "format": "date",
+                  "type": "string"
+                },
+                "start_date": {
+                  "format": "date",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "start_date",
+                "end_date"
+              ],
+              "type": "object"
+            }
+          },
+          {
+            "$ref": "#/parameters/preferParams"
+          }
+        ],
+        "produces": [
+          "application/json",
+          "application/vnd.pgrst.object+json;nulls=stripped",
+          "application/vnd.pgrst.object+json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "(rpc) hist_day_cr"
+        ]
+      }
+    },
+    "/rpc/esr_panelist_status": {
+      "get": {
+        "produces": [
+          "application/json",
+          "application/vnd.pgrst.object+json;nulls=stripped",
+          "application/vnd.pgrst.object+json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "(rpc) esr_panelist_status"
+        ]
+      },
+      "post": {
+        "parameters": [
+          {
+            "in": "body",
+            "name": "args",
+            "required": true,
+            "schema": {
+              "type": "object"
+            }
+          },
+          {
+            "$ref": "#/parameters/preferParams"
+          }
+        ],
+        "produces": [
+          "application/json",
+          "application/vnd.pgrst.object+json;nulls=stripped",
+          "application/vnd.pgrst.object+json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "tags": [
+          "(rpc) esr_panelist_status"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "last_day_esr": {
+      "description": "The latest ESR value calculated with real on-chain data",
+      "properties": {
+        "date": {
+          "format": "date",
+          "type": "string"
+        },
+        "esr": {
+          "format": "double precision",
+          "type": "number"
+        }
+      },
+      "type": "object"
+    },
+    "esr_pdv_pan_lb": {
+      "properties": {
+        "rank": {
+          "format": "bigint",
+          "type": "integer"
+        },
+        "name": {
+          "format": "text",
+          "type": "string"
+        },
+        "website": {
+          "format": "text",
+          "type": "string"
+        },
+        "company_background": {
+          "format": "text",
+          "type": "string"
+        },
+        "company_logo": {
+          "format": "text",
+          "type": "string"
+        },
+        "x_link": {
+          "format": "text",
+          "type": "string"
+        },
+        "participation_rate": {
+          "format": "double precision",
+          "type": "number"
+        },
+        "mae": {
+          "format": "double precision",
+          "type": "number"
+        }
+      },
+      "type": "object"
+    },
+    "consensus_reference": {
+      "properties": {
+        "dor_id": {
+          "format": "integer",
+          "type": "integer"
+        },
+        "round_id": {
+          "format": "integer",
+          "type": "integer"
+        },
+        "tenor": {
+          "format": "text",
+          "type": "string"
+        },
+        "date": {
+          "format": "date",
+          "type": "string"
+        },
+        "consensus_value": {
+          "format": "double precision",
+          "type": "number"
+        },
+        "reference_value": {
+          "format": "double precision",
+          "type": "number"
+        }
+      },
+      "type": "object"
+    },
+    "participation_history": {
+      "properties": {
+        "panelist_id": {
+          "format": "integer",
+          "type": "integer"
+        },
+        "participation_map_id": {
+          "description": "Note:\nThis is a Primary Key.<pk/>",
+          "format": "integer",
+          "type": "integer"
+        },
+        "dor_id": {
+          "format": "integer",
+          "type": "integer"
+        },
+        "tenor": {
+          "format": "text",
+          "type": "string"
+        },
+        "round_id": {
+          "format": "integer",
+          "type": "integer"
+        },
+        "round_end_date": {
+          "format": "date",
+          "type": "string"
+        },
+        "expected": {
+          "format": "boolean",
+          "type": "boolean"
+        },
+        "participated": {
+          "format": "boolean",
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "day_esr": {
+      "properties": {
+        "date": {
+          "format": "date",
+          "type": "string"
+        },
+        "pr": {
+          "format": "double precision",
+          "type": "number"
+        },
+        "ar": {
+          "format": "double precision",
+          "type": "number"
+        },
+        "sc": {
+          "format": "double precision",
+          "type": "number"
+        },
+        "cr": {
+          "format": "double precision",
+          "type": "number"
+        },
+        "er": {
+          "format": "double precision",
+          "type": "number"
+        },
+        "s": {
+          "format": "double precision",
+          "type": "number"
+        },
+        "pa": {
+          "format": "double precision",
+          "type": "number"
+        },
+        "psy": {
+          "format": "double precision",
+          "type": "number"
+        },
+        "psl": {
+          "format": "double precision",
+          "type": "number"
+        },
+        "tot_earn": {
+          "format": "double precision",
+          "type": "number"
+        },
+        "avg_bal": {
+          "format": "double precision",
+          "type": "number"
+        },
+        "esr": {
+          "format": "double precision",
+          "type": "number"
+        },
+        "esr_no_mev": {
+          "format": "double precision",
+          "type": "number"
+        }
+      },
+      "type": "object"
+    },
+    "sub_hist_esr": {
+      "properties": {
+        "panelist_name": {
+          "format": "text",
+          "type": "string"
+        },
+        "panelist_id": {
+          "format": "integer",
+          "type": "integer"
+        },
+        "round_id": {
+          "format": "integer",
+          "type": "integer"
+        },
+        "round_date": {
+          "format": "date",
+          "type": "string"
+        },
+        "tenor_1d_date": {
+          "format": "date",
+          "type": "string"
+        },
+        "spot_submitted_rate": {
+          "format": "double precision",
+          "type": "number"
+        },
+        "spot_outcome": {
+          "format": "text",
+          "type": "string"
+        },
+        "tenor_1d_submitted_rate": {
+          "format": "double precision",
+          "type": "number"
+        },
+        "tenor_1d_outcome": {
+          "format": "text",
+          "type": "string"
+        },
+        "tenor_7d_date": {
+          "format": "date",
+          "type": "string"
+        },
+        "tenor_7d_submitted_rate": {
+          "format": "double precision",
+          "type": "number"
+        },
+        "tenor_7d_outcome": {
+          "format": "text",
+          "type": "string"
+        },
+        "tenor_30d_date": {
+          "format": "date",
+          "type": "string"
+        },
+        "tenor_30d_submitted_rate": {
+          "format": "double precision",
+          "type": "number"
+        },
+        "tenor_30d_outcome": {
+          "format": "text",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "daily_esr": {
+      "properties": {
+        "date": {
+          "format": "date",
+          "type": "string"
+        },
+        "esr": {
+          "format": "double precision",
+          "type": "number"
+        }
+      },
+      "type": "object"
+    },
+    "term_consensus": {
+      "properties": {
+        "date": {
+          "format": "date",
+          "type": "string"
+        },
+        "dor_id": {
+          "format": "integer",
+          "type": "integer"
+        },
+        "spot": {
+          "format": "double precision",
+          "type": "number"
+        },
+        "participated": {
+          "format": "integer",
+          "type": "integer"
+        },
+        "expected": {
+          "format": "integer",
+          "type": "integer"
+        },
+        "participation_rate": {
+          "format": "double precision",
+          "type": "number"
+        },
+        "1d": {
+          "format": "double precision",
+          "type": "number"
+        },
+        "7d": {
+          "format": "double precision",
+          "type": "number"
+        },
+        "30d": {
+          "format": "double precision",
+          "type": "number"
+        }
+      },
+      "type": "object"
+    }
+  },
+  "parameters": {
+    "preferParams": {
+      "name": "Prefer",
+      "description": "Preference",
+      "required": false,
+      "enum": [
+        "params=single-object"
+      ],
+      "in": "header",
+      "type": "string"
+    },
+    "preferReturn": {
+      "name": "Prefer",
+      "description": "Preference",
+      "required": false,
+      "enum": [
+        "return=representation",
+        "return=minimal",
+        "return=none"
+      ],
+      "in": "header",
+      "type": "string"
+    },
+    "preferCount": {
+      "name": "Prefer",
+      "description": "Preference",
+      "required": false,
+      "enum": [
+        "count=none"
+      ],
+      "in": "header",
+      "type": "string"
+    },
+    "preferPost": {
+      "name": "Prefer",
+      "description": "Preference",
+      "required": false,
+      "enum": [
+        "return=representation",
+        "return=minimal",
+        "return=none",
+        "resolution=ignore-duplicates",
+        "resolution=merge-duplicates"
+      ],
+      "in": "header",
+      "type": "string"
+    },
+    "select": {
+      "name": "select",
+      "description": "Filtering Columns",
+      "required": false,
+      "in": "query",
+      "type": "string"
+    },
+    "on_conflict": {
+      "name": "on_conflict",
+      "description": "On Conflict",
+      "required": false,
+      "in": "query",
+      "type": "string"
+    },
+    "order": {
+      "name": "order",
+      "description": "Ordering",
+      "required": false,
+      "in": "query",
+      "type": "string"
+    },
+    "range": {
+      "name": "Range",
+      "description": "Limiting and Pagination",
+      "required": false,
+      "in": "header",
+      "type": "string"
+    },
+    "rangeUnit": {
+      "name": "Range-Unit",
+      "description": "Limiting and Pagination",
+      "required": false,
+      "default": "items",
+      "in": "header",
+      "type": "string"
+    },
+    "offset": {
+      "name": "offset",
+      "description": "Limiting and Pagination",
+      "required": false,
+      "in": "query",
+      "type": "string"
+    },
+    "limit": {
+      "name": "limit",
+      "description": "Limiting and Pagination",
+      "required": false,
+      "in": "query",
+      "type": "string"
+    },
+    "body.last_day_esr": {
+      "name": "last_day_esr",
+      "description": "last_day_esr",
+      "required": false,
+      "in": "body",
+      "schema": {
+        "$ref": "#/definitions/last_day_esr"
+      }
+    },
+    "rowFilter.last_day_esr.date": {
+      "name": "date",
+      "required": false,
+      "in": "query",
+      "type": "string"
+    },
+    "rowFilter.last_day_esr.esr": {
+      "name": "esr",
+      "required": false,
+      "in": "query",
+      "type": "string"
+    },
+    "body.esr_pdv_pan_lb": {
+      "name": "esr_pdv_pan_lb",
+      "description": "esr_pdv_pan_lb",
+      "required": false,
+      "in": "body",
+      "schema": {
+        "$ref": "#/definitions/esr_pdv_pan_lb"
+      }
+    },
+    "rowFilter.esr_pdv_pan_lb.rank": {
+      "name": "rank",
+      "required": false,
+      "in": "query",
+      "type": "string"
+    },
+    "rowFilter.esr_pdv_pan_lb.name": {
+      "name": "name",
+      "required": false,
+      "in": "query",
+      "type": "string"
+    },
+    "rowFilter.esr_pdv_pan_lb.website": {
+      "name": "website",
+      "required": false,
+      "in": "query",
+      "type": "string"
+    },
+    "rowFilter.esr_pdv_pan_lb.company_background": {
+      "name": "company_background",
+      "required": false,
+      "in": "query",
+      "type": "string"
+    },
+    "rowFilter.esr_pdv_pan_lb.company_logo": {
+      "name": "company_logo",
+      "required": false,
+      "in": "query",
+      "type": "string"
+    },
+    "rowFilter.esr_pdv_pan_lb.x_link": {
+      "name": "x_link",
+      "required": false,
+      "in": "query",
+      "type": "string"
+    },
+    "rowFilter.esr_pdv_pan_lb.participation_rate": {
+      "name": "participation_rate",
+      "required": false,
+      "in": "query",
+      "type": "string"
+    },
+    "rowFilter.esr_pdv_pan_lb.mae": {
+      "name": "mae",
+      "required": false,
+      "in": "query",
+      "type": "string"
+    },
+    "body.consensus_reference": {
+      "name": "consensus_reference",
+      "description": "consensus_reference",
+      "required": false,
+      "in": "body",
+      "schema": {
+        "$ref": "#/definitions/consensus_reference"
+      }
+    },
+    "rowFilter.consensus_reference.dor_id": {
+      "name": "dor_id",
+      "required": false,
+      "in": "query",
+      "type": "string"
+    },
+    "rowFilter.consensus_reference.round_id": {
+      "name": "round_id",
+      "required": false,
+      "in": "query",
+      "type": "string"
+    },
+    "rowFilter.consensus_reference.tenor": {
+      "name": "tenor",
+      "required": false,
+      "in": "query",
+      "type": "string"
+    },
+    "rowFilter.consensus_reference.date": {
+      "name": "date",
+      "required": false,
+      "in": "query",
+      "type": "string"
+    },
+    "rowFilter.consensus_reference.consensus_value": {
+      "name": "consensus_value",
+      "required": false,
+      "in": "query",
+      "type": "string"
+    },
+    "rowFilter.consensus_reference.reference_value": {
+      "name": "reference_value",
+      "required": false,
+      "in": "query",
+      "type": "string"
+    },
+    "body.participation_history": {
+      "name": "participation_history",
+      "description": "participation_history",
+      "required": false,
+      "in": "body",
+      "schema": {
+        "$ref": "#/definitions/participation_history"
+      }
+    },
+    "rowFilter.participation_history.panelist_id": {
+      "name": "panelist_id",
+      "required": false,
+      "in": "query",
+      "type": "string"
+    },
+    "rowFilter.participation_history.participation_map_id": {
+      "name": "participation_map_id",
+      "required": false,
+      "in": "query",
+      "type": "string"
+    },
+    "rowFilter.participation_history.dor_id": {
+      "name": "dor_id",
+      "required": false,
+      "in": "query",
+      "type": "string"
+    },
+    "rowFilter.participation_history.tenor": {
+      "name": "tenor",
+      "required": false,
+      "in": "query",
+      "type": "string"
+    },
+    "rowFilter.participation_history.round_id": {
+      "name": "round_id",
+      "required": false,
+      "in": "query",
+      "type": "string"
+    },
+    "rowFilter.participation_history.round_end_date": {
+      "name": "round_end_date",
+      "required": false,
+      "in": "query",
+      "type": "string"
+    },
+    "rowFilter.participation_history.expected": {
+      "name": "expected",
+      "required": false,
+      "in": "query",
+      "type": "string"
+    },
+    "rowFilter.participation_history.participated": {
+      "name": "participated",
+      "required": false,
+      "in": "query",
+      "type": "string"
+    },
+    "body.day_esr": {
+      "name": "day_esr",
+      "description": "day_esr",
+      "required": false,
+      "in": "body",
+      "schema": {
+        "$ref": "#/definitions/day_esr"
+      }
+    },
+    "rowFilter.day_esr.date": {
+      "name": "date",
+      "required": false,
+      "in": "query",
+      "type": "string"
+    },
+    "rowFilter.day_esr.pr": {
+      "name": "pr",
+      "required": false,
+      "in": "query",
+      "type": "string"
+    },
+    "rowFilter.day_esr.ar": {
+      "name": "ar",
+      "required": false,
+      "in": "query",
+      "type": "string"
+    },
+    "rowFilter.day_esr.sc": {
+      "name": "sc",
+      "required": false,
+      "in": "query",
+      "type": "string"
+    },
+    "rowFilter.day_esr.cr": {
+      "name": "cr",
+      "required": false,
+      "in": "query",
+      "type": "string"
+    },
+    "rowFilter.day_esr.er": {
+      "name": "er",
+      "required": false,
+      "in": "query",
+      "type": "string"
+    },
+    "rowFilter.day_esr.s": {
+      "name": "s",
+      "required": false,
+      "in": "query",
+      "type": "string"
+    },
+    "rowFilter.day_esr.pa": {
+      "name": "pa",
+      "required": false,
+      "in": "query",
+      "type": "string"
+    },
+    "rowFilter.day_esr.psy": {
+      "name": "psy",
+      "required": false,
+      "in": "query",
+      "type": "string"
+    },
+    "rowFilter.day_esr.psl": {
+      "name": "psl",
+      "required": false,
+      "in": "query",
+      "type": "string"
+    },
+    "rowFilter.day_esr.tot_earn": {
+      "name": "tot_earn",
+      "required": false,
+      "in": "query",
+      "type": "string"
+    },
+    "rowFilter.day_esr.avg_bal": {
+      "name": "avg_bal",
+      "required": false,
+      "in": "query",
+      "type": "string"
+    },
+    "rowFilter.day_esr.esr": {
+      "name": "esr",
+      "required": false,
+      "in": "query",
+      "type": "string"
+    },
+    "rowFilter.day_esr.esr_no_mev": {
+      "name": "esr_no_mev",
+      "required": false,
+      "in": "query",
+      "type": "string"
+    },
+    "body.sub_hist_esr": {
+      "name": "sub_hist_esr",
+      "description": "sub_hist_esr",
+      "required": false,
+      "in": "body",
+      "schema": {
+        "$ref": "#/definitions/sub_hist_esr"
+      }
+    },
+    "rowFilter.sub_hist_esr.panelist_name": {
+      "name": "panelist_name",
+      "required": false,
+      "in": "query",
+      "type": "string"
+    },
+    "rowFilter.sub_hist_esr.panelist_id": {
+      "name": "panelist_id",
+      "required": false,
+      "in": "query",
+      "type": "string"
+    },
+    "rowFilter.sub_hist_esr.round_id": {
+      "name": "round_id",
+      "required": false,
+      "in": "query",
+      "type": "string"
+    },
+    "rowFilter.sub_hist_esr.round_date": {
+      "name": "round_date",
+      "required": false,
+      "in": "query",
+      "type": "string"
+    },
+    "rowFilter.sub_hist_esr.tenor_1d_date": {
+      "name": "tenor_1d_date",
+      "required": false,
+      "in": "query",
+      "type": "string"
+    },
+    "rowFilter.sub_hist_esr.spot_submitted_rate": {
+      "name": "spot_submitted_rate",
+      "required": false,
+      "in": "query",
+      "type": "string"
+    },
+    "rowFilter.sub_hist_esr.spot_outcome": {
+      "name": "spot_outcome",
+      "required": false,
+      "in": "query",
+      "type": "string"
+    },
+    "rowFilter.sub_hist_esr.tenor_1d_submitted_rate": {
+      "name": "tenor_1d_submitted_rate",
+      "required": false,
+      "in": "query",
+      "type": "string"
+    },
+    "rowFilter.sub_hist_esr.tenor_1d_outcome": {
+      "name": "tenor_1d_outcome",
+      "required": false,
+      "in": "query",
+      "type": "string"
+    },
+    "rowFilter.sub_hist_esr.tenor_7d_date": {
+      "name": "tenor_7d_date",
+      "required": false,
+      "in": "query",
+      "type": "string"
+    },
+    "rowFilter.sub_hist_esr.tenor_7d_submitted_rate": {
+      "name": "tenor_7d_submitted_rate",
+      "required": false,
+      "in": "query",
+      "type": "string"
+    },
+    "rowFilter.sub_hist_esr.tenor_7d_outcome": {
+      "name": "tenor_7d_outcome",
+      "required": false,
+      "in": "query",
+      "type": "string"
+    },
+    "rowFilter.sub_hist_esr.tenor_30d_date": {
+      "name": "tenor_30d_date",
+      "required": false,
+      "in": "query",
+      "type": "string"
+    },
+    "rowFilter.sub_hist_esr.tenor_30d_submitted_rate": {
+      "name": "tenor_30d_submitted_rate",
+      "required": false,
+      "in": "query",
+      "type": "string"
+    },
+    "rowFilter.sub_hist_esr.tenor_30d_outcome": {
+      "name": "tenor_30d_outcome",
+      "required": false,
+      "in": "query",
+      "type": "string"
+    },
+    "body.daily_esr": {
+      "name": "daily_esr",
+      "description": "daily_esr",
+      "required": false,
+      "in": "body",
+      "schema": {
+        "$ref": "#/definitions/daily_esr"
+      }
+    },
+    "rowFilter.daily_esr.date": {
+      "name": "date",
+      "required": false,
+      "in": "query",
+      "type": "string"
+    },
+    "rowFilter.daily_esr.esr": {
+      "name": "esr",
+      "required": false,
+      "in": "query",
+      "type": "string"
+    },
+    "body.term_consensus": {
+      "name": "term_consensus",
+      "description": "term_consensus",
+      "required": false,
+      "in": "body",
+      "schema": {
+        "$ref": "#/definitions/term_consensus"
+      }
+    },
+    "rowFilter.term_consensus.date": {
+      "name": "date",
+      "required": false,
+      "in": "query",
+      "type": "string"
+    },
+    "rowFilter.term_consensus.dor_id": {
+      "name": "dor_id",
+      "required": false,
+      "in": "query",
+      "type": "string"
+    },
+    "rowFilter.term_consensus.spot": {
+      "name": "spot",
+      "required": false,
+      "in": "query",
+      "type": "string"
+    },
+    "rowFilter.term_consensus.participated": {
+      "name": "participated",
+      "required": false,
+      "in": "query",
+      "type": "string"
+    },
+    "rowFilter.term_consensus.expected": {
+      "name": "expected",
+      "required": false,
+      "in": "query",
+      "type": "string"
+    },
+    "rowFilter.term_consensus.participation_rate": {
+      "name": "participation_rate",
+      "required": false,
+      "in": "query",
+      "type": "string"
+    },
+    "rowFilter.term_consensus.1d": {
+      "name": "1d",
+      "required": false,
+      "in": "query",
+      "type": "string"
+    },
+    "rowFilter.term_consensus.7d": {
+      "name": "7d",
+      "required": false,
+      "in": "query",
+      "type": "string"
+    },
+    "rowFilter.term_consensus.30d": {
+      "name": "30d",
+      "required": false,
+      "in": "query",
+      "type": "string"
+    }
+  },
+  "securityDefinitions": {
+    "JWT": {
+      "description": "Add the token prepending \"Bearer \" (without quotes) to it",
+      "in": "header",
+      "name": "Authorization",
+      "type": "apiKey"
+    }
+  },
+  "security": [
+    {
+      "JWT": []
+    }
+  ],
+  "externalDocs": {
+    "description": "PostgREST Documentation",
+    "url": "https://postgrest.org/en/v12/references/api.html"
+  }
+}
